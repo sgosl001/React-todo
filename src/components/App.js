@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import List from "./list";
+import AddButton from "./addButton";
 import { connect } from "react-redux";
 import Container from 'react-bootstrap/Container'
 import Row from 'react-bootstrap/Row';
@@ -11,11 +12,14 @@ class App extends Component {
     return (
       <div className="App">
         <h1 style={{ textAlign: "center" }}> Just Do </h1>
+        <div style={{ padding: "50px" }}>
+          <AddButton />
+        </div>
         <Container>
           <Row>
             { lists.map(list => (
               <Col>
-                <List title={list.title} items={list.listItems} />
+                <List key={list.id} title={list.title} items={list.listItems} />
               </Col>
             ))}
           </Row>
