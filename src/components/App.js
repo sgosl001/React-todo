@@ -4,23 +4,38 @@ import { connect } from "react-redux";
 import Container from 'react-bootstrap/Container'
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
+import AddItem from './AddItem';
+import { DragDropContext } from "react-beautiful-dnd";
+import uuid from "uuid";
 
 class App extends Component {
+
+  onDragEnd = () => {
+    //TODO: rendering logic
+  }
   render() {
     const { lists } = this.props;
     return (
-      <div className="App">
-        <h1 style={{ textAlign: "center" }}> Just Do </h1>
-        <Container>
-          <Row>
-            { lists.map(list => (
-              <Col>
-                <List title={list.title} items={list.listItems} />
-              </Col>
-            ))}
-          </Row>
-        </Container>
-      </div>
+      <DragDropContext onDragEnd={this.onDragEnd}>
+        <div className="App">
+          <h1 style={{ textAlign: "center" }}> To Do </h1>
+          <AddItem />
+          <Container>
+            <Row>
+              { lists.map(list => (
+                <Col key={list.id}>
+                  <List 
+                    title={list.title} 
+                    listID={list.id} 
+                    items={list.items} 
+                    id={uuid()} 
+                  />
+                </Col>
+              ))}
+            </Row>
+          </Container>
+        </div>
+      </DragDropContext>
     );
   }
 }

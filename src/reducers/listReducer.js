@@ -1,42 +1,50 @@
+import uuid from 'uuid';
+import { addItem } from '../actions';
+
 const initialState = [
     {
         title: "To Do",
         id: 0,
-        listItems: [
+        items: [
             {
                 id: 0,
-                text: "first item"
+                text: "some garbage"
             },
             {
                 id: 1,
-                text: "second item"
+                text: "another garbage"
             }
         ]
     },
     {
         title: "In Progress",
         id: 1,
-        listItems: [
-            {
-                id: 0,
-                text: "In Prog"
-            }
-        ]
+        items: []
     },
     {
         title: "Completed",
         id: 2,
-        listItems: [
-            {
-                id: 0,
-                text: "complete"
-            }
-        ]
+        items: []
     }
 ]
 
 const listReducer = (state = initialState, action) => {
     switch(action.type) {
+        case 'ADD_ITEM':
+
+            const newState = state.map(list => {
+                if (list.id === 0) {
+                    return {
+                        ...list,
+                        items: [...list.items, action.payload]
+                    };
+                } else {
+                    return list;
+                }
+            });
+
+            return newState;
+
         default:
             return state;
     }
