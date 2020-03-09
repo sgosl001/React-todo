@@ -5,7 +5,7 @@ import Modal from 'react-bootstrap/Modal';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import { Draggable } from "react-beautiful-dnd";
-import { editItem } from  '../actions';
+import { editItem, removeItem } from  '../actions';
 
 const ListItem = ({ listID, text, id, index, dispatch }) => {
     const [isEditing, setIsEditing] = useState(false);
@@ -20,14 +20,15 @@ const ListItem = ({ listID, text, id, index, dispatch }) => {
 
     const handleSubmit = e => {
         e.preventDefault();
-        setIsEditing(false);
+        setIsEditing(false);    
         
         dispatch(editItem(id, listID, itemText));
     }
 
     const handleDelete = e => {
         e.preventDefault();
-
+        
+        dispatch(removeItem(id, listID, itemText));
     }
 
     return (
@@ -54,6 +55,7 @@ const ListItem = ({ listID, text, id, index, dispatch }) => {
                                     Edit
                                 </Button>
                                 <Button 
+                                onClick={handleDelete}
                                 size="sm"
                                 variant="outline-danger"
                                 style={{width: "10%"}}

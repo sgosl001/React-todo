@@ -22,9 +22,9 @@ export const sort = (
     }
 }
 
-export const removeItem = ( id, listID ) => ({
+export const removeItem = ( id, listID, text ) => ({
     type: 'REMOVE_ITEM',
-    payload: { id, listID }
+    payload: { id, listID, text }
 });
 
 export const editItem = ( id, listID, text ) => ({

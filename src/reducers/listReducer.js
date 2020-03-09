@@ -1,16 +1,8 @@
-import uuid from 'uuid';
-
 const initialState = [
     {
         title: "To Do",
         id: 0,
-        items: [
-            {
-                id: 0,
-                listID: 0,
-                text: "dummy data"
-            }
-        ]
+        items: []
     },
     {
         title: "In Progress",
@@ -47,16 +39,30 @@ const listReducer = (state = initialState, action) => {
             
             const newState = state.map(list => {
                 if (list.id === listID) {
-                    return {
-                        ...list,
-                        items: Object.assign([...list.items], { [id]: action.payload })
-                    };
-                } else {
-                    return list;
-                }
+                    Object.assign([...list.items].find(item => item.id === id), action.payload)
+                } 
+                
+                return list;
             });
 
             return newState;
+        }
+
+        case 'REMOVE_ITEM': {
+            const { id, listID, text } = action.payload;
+
+            const newState = state.map(list => {
+                if (list.id === listID) {
+                    return {
+                        ...list,
+                        items: [...list.items.filter(item => item.id !== id)]
+                    }
+                } else {
+                    return list;
+                }
+            })
+
+            return newState
         }
 
         case 'DRAG_HAPPENED': {
