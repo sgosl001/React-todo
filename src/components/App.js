@@ -6,13 +6,27 @@ import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import AddItem from './AddItem';
 import { DragDropContext } from "react-beautiful-dnd";
+import { sort } from "../actions"
 import uuid from "uuid";
 
 class App extends Component {
 
-  onDragEnd = () => {
-    //TODO: rendering logic
-  }
+  onDragEnd = (result) => {
+    const { destination, source, draggableId } = result;
+    
+    if(!destination) {
+      return;
+    }
+
+    this.props.dispatch(sort(
+      source.droppableId,
+      destination.droppableId,
+      source.index,
+      destination.index,
+      draggableId
+    ))
+  };
+
   render() {
     const { lists } = this.props;
     return (
@@ -28,7 +42,8 @@ class App extends Component {
                     title={list.title} 
                     listID={list.id} 
                     items={list.items} 
-                    id={uuid()} 
+                    id={uuid()}
+                    dispatch={this.props.dispatch}
                   />
                 </Col>
               ))}

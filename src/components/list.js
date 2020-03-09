@@ -4,32 +4,31 @@ import Card from "react-bootstrap/Card";
 import { Droppable } from "react-beautiful-dnd";
 import uuid from "uuid";
 
-const List = ({ title, items, listID, id }) => {
+const List = ({ title, items, listID, id, dispatch }) => {
     return ( 
-        <div>
-            <Droppable droppableId={String(id) }>
+        <Card>
+            <Card.Header style={{ textAlign: "center" }}>{title}</Card.Header>
+            <Droppable droppableId={String(listID)}>
                 {provided => (
-                    <Card>
-                        <Card.Body                        
-                            {...provided.droppableProps} 
-                            ref={provided.innerRef}
+                    <Card.Body
+                        {...provided.droppableProps} 
+                        ref={provided.innerRef}
                         >
-                            <h3>{title}</h3>
-                            {items.map((item, index) => (
-                                <ListItem 
-                                    key={uuid()} 
-                                    listID={listID} 
-                                    id={uuid()} 
-                                    text={item.text}
-                                    index={index}
-                                />
-                            ))}
-                        </Card.Body>
+                        {items.map((item, index) => (
+                            <ListItem 
+                                key={uuid()} 
+                                listID={listID} 
+                                id={item.id} 
+                                text={item.text}
+                                index={index}
+                                dispatch={dispatch}
+                            />
+                        ))}
                         {provided.placeholder}
-                    </Card>
+                    </Card.Body>
                 )}
             </Droppable> 
-        </div>
+        </Card>
     );
 };
 

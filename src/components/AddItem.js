@@ -21,7 +21,7 @@ class AddItem extends React.Component {
         const { text } = this.state;
 
         if (text) {
-            dispatch(addItem(text, uuid()));
+            dispatch(addItem(uuid(), 0, text));
         }
     }
 
