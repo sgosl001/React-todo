@@ -35,7 +35,7 @@ class AddItem extends React.Component {
                             placeholder="enter a todo item"
                             onChange={e => this.handleChange(e.target.value)}
                             />
-                        <Button type="button" variant="primary" onClick={this.handleAddItem}>
+                        <Button type="submit" variant="primary" onClick={this.handleAddItem}>
                             Add ToDo
                         </Button>
                     </Form.Group>
