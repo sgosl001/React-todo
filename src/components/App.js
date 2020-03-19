@@ -32,9 +32,9 @@ class App extends Component {
     return (
       <DragDropContext onDragEnd={this.onDragEnd}>
         <div className="App">
-          <h1 style={{ textAlign: "center" }}> To Do </h1>
-          <AddItem />
+          <h1 style={{ textAlign: "center" }}> Lets Do </h1>
           <Container>
+            <AddItem />
             <Row>
               { lists.map(list => (
                 <Col key={list.id}>

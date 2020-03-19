@@ -45,7 +45,7 @@ const ListItem = ({ listID, text, id, index, dispatch }) => {
                         </Card.Body>
                         <Card.Footer>
                             <Button 
-                                size="sm" 
+                                size="sm"
                                 onClick={handleShow}
                                 variant="outline-primary"
                                 style={{width: "85%",
@@ -72,7 +72,7 @@ const ListItem = ({ listID, text, id, index, dispatch }) => {
                                     defaultValue={itemText}
                                     onChange={handleChange}
                                     />
-                                <Button onClick={handleSubmit}>Add</Button>
+                                <Button type="submit" onClick={handleSubmit}>Add</Button>
                             </Form>
                         </Modal.Body>
                     </Modal.Header>
