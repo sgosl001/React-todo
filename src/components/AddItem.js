@@ -24,6 +24,7 @@ class AddItem extends React.Component {
     if (text) {
       dispatch(addItem(uuid(), 0, text));
     }
+    e.target.reset();
   };
 
   render() {

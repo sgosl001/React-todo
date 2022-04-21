@@ -63,7 +63,7 @@ const ListItem = ({ listID, text, id, index, dispatch }) => {
             </Card.Footer>
           </Card>
           <Modal className='modal fade' show={isEditing} onHide={handleClose}>
-            <Modal.Header closeButton></Modal.Header>
+            <Modal.Header closeButton> Editing </Modal.Header>
             <Form>
               <Modal.Body>
                 <Form.Group className='d-flex' controlId='EditItem'>
@@ -77,10 +77,10 @@ const ListItem = ({ listID, text, id, index, dispatch }) => {
               <Modal.Footer>
                 <Button
                   type='submit'
-                  className='w-25 ml-3 btn btn-info'
+                  className='w-25 ml-3 btn btn-info rounded-pill'
                   onClick={handleSubmit}
                 >
-                  Add
+                  Submit
                 </Button>
               </Modal.Footer>
             </Form>
