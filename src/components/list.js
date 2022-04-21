@@ -6,7 +6,7 @@ import uuid from "uuid";
 
 const List = ({ title, items, listID, id, dispatch }) => {
     return ( 
-        <Card>
+        <Card className='bg-white rounded'>
             <Card.Header style={{ textAlign: "center" }}>{title}</Card.Header>
             <Droppable droppableId={String(listID)}>
                 {provided => (

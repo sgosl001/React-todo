@@ -29,19 +29,20 @@ class AddItem extends React.Component {
         return (
             <div>
                 <Form>
-                    <Form.Group controlId="todoItem">
-                        <Form.Control 
+                    <Form.Group className="d-flex" controlId="todoItem">
+                        <Form.Control
+                            className="w-75 mx-2 rounded-pill"
                             type="text" 
                             placeholder="enter a todo item"
                             onChange={e => this.handleChange(e.target.value)}
                             />
                         <Button 
                             type="submit" 
-                            variant="primary" 
+                            className="btn btn-info w-25 rounded-pill"
                             onClick={this.handleAddItem}
                             onSubmit={this.preventDefault}
                             >
-                            Add ToDo
+                            Add Item
                         </Button>
                     </Form.Group>
                 </Form>
