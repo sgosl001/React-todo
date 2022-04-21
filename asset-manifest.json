@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/sgosl001/React-todo/static/css/main.453afc4d.css",
+    "main.js": "/sgosl001/React-todo/static/js/main.98a02d68.js",
+    "index.html": "/sgosl001/React-todo/index.html",
+    "main.453afc4d.css.map": "/sgosl001/React-todo/static/css/main.453afc4d.css.map",
+    "main.98a02d68.js.map": "/sgosl001/React-todo/static/js/main.98a02d68.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.453afc4d.css",
+    "static/js/main.98a02d68.js"
+  ]
+}
