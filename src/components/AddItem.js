@@ -16,19 +16,22 @@ class AddItem extends React.Component {
         });
     };
 
-    handleAddItem = () => {
+    handleAddItem = (e) => {
+        e.preventDefault();
         const { dispatch } = this.props;
         const { text } = this.state;
 
         if (text) {
             dispatch(addItem(uuid(), 0, text));
         }
+        
+        
     }
 
     render() {
         return (
             <div>
-                <Form>
+                <Form onSubmit={this.handleAddItem}>
                     <Form.Group className="d-flex" controlId="todoItem">
                         <Form.Control
                             className="w-75 mx-2 rounded-pill"
@@ -39,8 +42,6 @@ class AddItem extends React.Component {
                         <Button 
                             type="submit" 
                             className="btn btn-info w-25 rounded-pill"
-                            onClick={this.handleAddItem}
-                            onSubmit={this.preventDefault}
                             >
                             Add Item
                         </Button>
